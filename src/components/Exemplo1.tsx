@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Image, ScrollView, TextInput} from 'react-native';
+import {View, Text, Image, ScrollView, TextInput, Pressable} from 'react-native';
 import { styles } from '../styles/styles';
 
 const Exemplo1 = () => {
@@ -24,6 +24,12 @@ const Exemplo1 = () => {
         style={[styles.caixa_texto, styles.largura_70]}
         defaultValue="Digite aqui"
       />
+      
+      <Pressable
+        style={{backgroundColor: 'green'}}>
+        <Text style={styles.titulo1}>Isso é um botão</Text>
+      </Pressable>
+
     </ScrollView>
   );
 };

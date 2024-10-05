@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     tela: {
         flex: 1,
-        backgroundColor: '#FFFACD'
+        backgroundColor: '#1E52CF'
     },
     titulo1: {
         fontSize: 40,
