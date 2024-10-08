@@ -2,8 +2,8 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     tela: {
-        flex: 1,
-        backgroundColor: '#1E52CF'
+        flex: 4,
+        backgroundColor: '#DEDCD0'
     },
     titulo1: {
         fontSize: 40,
@@ -43,7 +43,26 @@ const styles = StyleSheet.create({
     imagem_200: {
         width: 200,
         height: 200
+    },
+
+    imagem: {
+        width: 300,
+        height: 300,
+        right: -50
+    },
+
+    margem: {
+        marginLeft: 10
+    },
+
+    view2: {
+        margin: 10,
+        flex: 1,
+        flexDirection: "row",
+        gap: 10,
+        left: 30
     }
+
 });
 
 export {styles};
