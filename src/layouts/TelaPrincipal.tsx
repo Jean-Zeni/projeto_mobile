@@ -6,6 +6,7 @@ import { styles } from '../styles/styles';
 import Exemplo1 from '../components/Exemplo1';
 import ExemploStylesText from '../components/ExemploStyleText';
 import ExemploStylesView from '../components/ExemploStyleView';
+import CalcularAprovacao from '../components/CalculadoraAprovacao';
 
 const TelaPrincipal = (props: PrincipalProps) => {
     return (
@@ -14,7 +15,8 @@ const TelaPrincipal = (props: PrincipalProps) => {
             {/* <HelloWorld /> */}
             {/* <Exemplo1/>*/}
             {/* <ExemploStylesText/> */}
-            <ExemploStylesView/>
+            {/* <ExemploStylesView/> */}
+            <CalcularAprovacao nomeAluno={"Alfredo"} nota1={10} nota2={10}/>
         </View>
     );
 }

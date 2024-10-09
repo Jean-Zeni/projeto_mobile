@@ -25,7 +25,7 @@ const StyleLog = () => {
                 />
 
                 <Pressable
-                    style={[{ backgroundColor: 'orange' }, { padding: 5 }, { borderRadius: 10 }]}>
+                    style={[styles.botao, {marginLeft: 40}, { backgroundColor: 'green' }, { padding: 5 }, { borderRadius: 10 }]}>
                     <Text style={styles.texto_botao}>Entrar</Text>
                 </Pressable>
 
@@ -35,12 +35,12 @@ const StyleLog = () => {
 
             <View style={[styles.view2, { marginTop: 70 }]} >
                 <Pressable
-                    style={[{ backgroundColor: 'orange' }, { padding: 5 }, { borderRadius: 10 }]}>
+                    style={[styles.botao, { backgroundColor: 'orange' }, { padding: 5 }, { borderRadius: 10 }]}>
                     <Text style={styles.texto_botao}>Cadastrar-se</Text>
                 </Pressable>
 
                 <Pressable
-                    style={[{ backgroundColor: 'orange' }, { padding: 5 }, { borderRadius: 10 }]}>
+                    style={[styles.botao, { backgroundColor: 'orange' }, { padding: 5 }, { borderRadius: 10 }]}>
                     <Text style={styles.texto_botao}>Esqueceu a senha?</Text>
                 </Pressable>
             </View>

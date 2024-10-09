@@ -21,7 +21,8 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal: 30,
         marginTop: 20,
-        borderRadius: 10
+        borderRadius: 10,
+        width: 160
     },
     texto_botao: {
         fontSize: 20,
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
     imagem: {
         width: 300,
         height: 300,
-        right: -50
+        right: -42
     },
 
     margem: {
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: "row",
         gap: 10,
-        left: 30
+        left: 20
     }
 
 });
