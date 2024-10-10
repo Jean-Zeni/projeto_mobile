@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: 'white'
     },
-    
+
     caixa_texto: {
         color: 'black',
         fontSize: 20,
@@ -62,8 +62,51 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         gap: 10,
         left: 20
-    }
+    },
 
+    item: {
+        padding: 10,
+        fontSize: 25,
+        color: 'red',
+        borderWidth: 2,
+        borderColor: 'green',
+        borderRadius: 10,
+        margin: 5
+    },
+
+    item2: {
+        padding: 10,
+        fontSize: 25,
+        color: 'green',
+        borderWidth: 2,
+        borderColor: 'blue',
+        borderRadius: 10,
+        margin: 5
+    },
+
+    item3: {
+        padding: 10,
+        fontSize: 18,
+        height: 44,
+        color: 'red'
+    },
+
+    item4: {
+        padding: 10,
+        fontSize: 18,
+        height: 44,
+        color: 'green'
+    },
+
+    item5: {
+        padding: 20,
+        fontSize: 14,
+        width: 350,
+        color: 'green',
+        borderStyle: 'solid',
+        borderWidth: 1,
+        borderRadius: 20
+    }
 });
 
-export {styles};
+export { styles };
