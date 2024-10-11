@@ -19,7 +19,7 @@ const ListaProdutos = (props: ListaProdsProps) => {
                 renderItem={(info) => {
                     return (
                         <Text style={styles.item5}>
-                            {info.item.nome + ' ' + info.item.codBarras + ' ' + info.item.preco}
+                            {info.item.nome + '\n' + info.item.codBarras + '\n' + info.item.preco.toFixed(2)}
                         </Text>
                     )
                 }}

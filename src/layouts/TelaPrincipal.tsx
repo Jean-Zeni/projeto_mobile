@@ -12,6 +12,8 @@ import { Animal } from '../types/Animal';
 import ListaAnimais from '../components/ListaAnimais';
 import { Produto } from '../types/Produto';
 import ListaProdutos from '../components/ListaProdutos';
+import ExemploState from '../components/ExemploState';
+import ExemploEvento from '../components/ExemploEvento';
 
 const TelaPrincipal = (props: PrincipalProps) => {
 
@@ -27,7 +29,7 @@ const TelaPrincipal = (props: PrincipalProps) => {
     let produto1 = { nome: 'Kinder Ovo', codBarras: '43215678', preco: 1000.00 } as Produto
     let produto2 = { nome: 'Miojo', codBarras: '12123456', preco: 2.00 } as Produto
     let produto3 = { nome: 'Colgate', codBarras: '89896767', preco: 5.00 } as Produto
-    let produto4 = { nome: 'Bife', codBarras: '12344321' } as Produto
+    let produto4 = { nome: 'Bife', codBarras: '12344321', preco: 20.00 } as Produto
 
     let listaProdutos = [produto1, produto2, produto3, produto4] as Produto[]
 
@@ -35,11 +37,9 @@ const TelaPrincipal = (props: PrincipalProps) => {
     return (
         <View
             style={[styles.tela]}>
-            <ListaSimples listaPessoas={listaPessoas} />
-
-            <ListaAnimais listaAnimais={listaAnimais} />
-
-            <ListaProdutos listaProdutos={listaProdutos} />
+            
+            <ExemploState/>
+            <ExemploEvento/>
         </View>
     );
 }
