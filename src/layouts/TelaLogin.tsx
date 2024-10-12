@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Alert, Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
-import { PrincipalProps } from '../navigation/HomeNavigator';
+import { LoginProps, PrincipalProps } from '../navigation/HomeNavigator';
 import HelloWorld from '../components/HelloWorld';
 import { styles } from '../styles/styles';
 import Exemplo1 from '../components/Exemplo1';
@@ -9,7 +9,7 @@ import ExemploStylesView from '../components/ExemploStyleView';
 import StyleLog from '../components/StyleLog';
 import CalcularAprovacao from '../components/CalculadoraAprovacao';
 
-const TelaLogin = () => {
+const TelaLogin = (props: LoginProps) => {
 
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
@@ -21,9 +21,17 @@ const TelaLogin = () => {
     }
 
     function exibirMensagem() {
-        console.log(email + '\n' + senha);
+        Alert.alert(
+            'Dados',
+            'E-mail: ' + email +
+            '\nSenha: ' + senha
+        );
 
-        Alert.alert(email + '\n' + senha);
+        props.navigation.navigate('TelaPrincipal');
+    }
+
+    function fazerCadastro(){
+        props.navigation.navigate('TelaCadastro');
     }
 
     return (
@@ -75,9 +83,10 @@ const TelaLogin = () => {
 
                 </View>
 
-                <View style={[styles.view2, { marginTop: 70 }]} >
+                <View style={[styles.view2, { marginTop: 20 }]} >
                     <Pressable
-                        style={(state) => [styles.botao, state.pressed ? { opacity: 0.2 } : null, { backgroundColor: 'orange' }, { padding: 5 }, { borderRadius: 10 }]}>
+                        style={(state) => [styles.botao, state.pressed ? { opacity: 0.2 } : null, { backgroundColor: 'orange' }, { padding: 5 }, { borderRadius: 10 }]}
+                        onPress={() => { fazerCadastro() }}>
                         <Text style={styles.texto_botao}>Cadastrar-se</Text>
                     </Pressable>
 
