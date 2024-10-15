@@ -23,11 +23,13 @@ const TelaLogin = (props: LoginProps) => {
     function exibirMensagem() {
         Alert.alert(
             'Dados',
-            'E-mail: ' + email +
+            'E-mail: ' + email + //login
             '\nSenha: ' + senha
         );
 
-        props.navigation.navigate('TelaPrincipal');
+        props.navigation.navigate('TelaPrincipal', 
+            {texto: email});
+        
     }
 
     function fazerCadastro(){

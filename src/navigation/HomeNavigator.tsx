@@ -4,9 +4,10 @@ import TelaLogin from "../layouts/TelaLogin";
 import TelaCadastro from "../layouts/TelaCadastro";
 
 type RootStackParamList = {
-    TelaPrincipal: undefined;
+    TelaPrincipal: {texto: string};
     TelaLogin: undefined;
     TelaCadastro: undefined;
+    //modelo: telaMod: {valor: number}
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();

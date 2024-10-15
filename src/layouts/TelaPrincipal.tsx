@@ -14,6 +14,7 @@ import { Produto } from '../types/Produto';
 import ListaProdutos from '../components/ListaProdutos';
 import ExemploState from '../components/ExemploState';
 import ExemploEvento from '../components/ExemploEvento';
+import ExemploConstrucaoCondicao from '../components/ExemploConstrucaoCondicao';
 
 const TelaPrincipal = (props: PrincipalProps) => {
 
@@ -44,7 +45,7 @@ const TelaPrincipal = (props: PrincipalProps) => {
                 <Text style={{ fontSize: 40 }}>Voltar</Text>
             </Pressable>
 
-            <ExemploState />
+            <ExemploConstrucaoCondicao />
         </View>
     );
 }
