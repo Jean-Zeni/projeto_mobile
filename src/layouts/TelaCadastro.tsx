@@ -4,6 +4,7 @@ import { Alert, Pressable, ScrollView, Text, TextInput, View } from "react-nativ
 import { styles } from "../styles/styles";
 import TelaLogin from "./TelaLogin";
 
+import auth from "@react-native-firebase/auth";
 
 const TelaCadastro = (props: CadastroProps) => {
 
@@ -11,13 +12,14 @@ const TelaCadastro = (props: CadastroProps) => {
     const [senha, setSenha] = useState('');
     const [confSenha, setConfSenha] = useState('');
 
-    function exibirMensagem() {
-        Alert.alert(
-            'Email: ' + email + '\n' +
-            'Senha: ' + senha
-        )
-
-        props.navigation.navigate('TelaLogin')
+    function salvar() {
+        auth()
+            .createUserWithEmailAndPassword(email, senha)
+            .then(() => {
+                Alert.alert("Conta",
+                    "Cadastrada com sucesso")
+                props.navigation.goBack();
+            });
     }
 
     function exibirMensagemErro() {
@@ -82,14 +84,7 @@ const TelaCadastro = (props: CadastroProps) => {
 
                 <Pressable
                     style={(state) => [styles.botao, state.pressed ? { opacity: 0.2 } : null, { marginLeft: 40 }, { backgroundColor: 'green' }, { padding: 5 }, { borderRadius: 10 }]}
-                    onPress={() => {
-
-                        if (senha == confSenha) {
-                            exibirMensagem()
-                        } else {
-                            exibirMensagemErro()
-                        }
-                    }}>
+                    onPress={() => salvar()}>
 
                     <Text style={styles.texto_botao}>Salvar</Text>
                 </Pressable>

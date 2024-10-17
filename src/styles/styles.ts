@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         width: 160
     },
+    
     texto_botao: {
         fontSize: 20,
         color: 'white'
@@ -62,6 +63,14 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         gap: 10,
         left: 20
+    },
+
+    view3: {
+        marginTop: 100,
+        flex: 1,
+        flexDirection: "column",
+        gap: 10,
+        alignItems: "center"
     },
 
     item: {

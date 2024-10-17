@@ -2,11 +2,15 @@ import { NativeStackScreenProps, createNativeStackNavigator } from "@react-navig
 import TelaPrincipal from "../layouts/TelaPrincipal";
 import TelaLogin from "../layouts/TelaLogin";
 import TelaCadastro from "../layouts/TelaCadastro";
+import TelaExemplos from "../layouts/TelaExemplos";
+import TelaExecExemplos from "../layouts/TelaExecExemplos";
 
 type RootStackParamList = {
-    TelaPrincipal: {texto: string};
+    TelaPrincipal: { texto: string };
     TelaLogin: undefined;
     TelaCadastro: undefined;
+    TelaExemplos: undefined;
+    TelaExecExemplos: { tipoComponente: number };
     //modelo: telaMod: {valor: number}
 };
 
@@ -23,7 +27,11 @@ const HomeNavigator = () => {
 
             <Stack.Screen name="TelaLogin" component={TelaLogin} />
 
-            <Stack.Screen name="TelaCadastro" component={TelaCadastro} /> 
+            <Stack.Screen name="TelaCadastro" component={TelaCadastro} />
+
+            <Stack.Screen name="TelaExemplos" component={TelaExemplos} />
+
+            <Stack.Screen name="TelaExecExemplos" component={TelaExecExemplos} />
 
         </Stack.Navigator>
     );
@@ -38,10 +46,18 @@ type LoginProps = NativeStackScreenProps<RootStackParamList,
 type CadastroProps = NativeStackScreenProps<RootStackParamList,
     'TelaCadastro'>;
 
+type TelaExemploProps = NativeStackScreenProps<RootStackParamList,
+    'TelaExemplos'>;
+
+type TelaExecExemploProps = NativeStackScreenProps<RootStackParamList,
+    'TelaExecExemplos'>;
+
 export default HomeNavigator;
 
 export type {
     PrincipalProps,
     LoginProps,
-    CadastroProps
+    CadastroProps,
+    TelaExemploProps,
+    TelaExecExemploProps
 };
