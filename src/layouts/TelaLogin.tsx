@@ -9,10 +9,61 @@ import ExemploStylesView from '../components/ExemploStyleView';
 import StyleLog from '../components/StyleLog';
 import CalcularAprovacao from '../components/CalculadoraAprovacao';
 
+import auth from "@react-native-firebase/auth";
+
 const TelaLogin = (props: LoginProps) => {
 
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
+
+    function logar() {
+        if (verificarCampos()) {
+            auth().signInWithEmailAndPassword(email, senha).then(() => {
+                props.navigation.navigate('TelaPrincipal', { texto: '' })
+            })
+                .catch((error) => tratarErros(String(error)))
+        }
+    }
+
+    function verificarCampos() {
+        if (email == '') {
+            Alert.alert("Email em branco", "Digite um e-mail")
+            return false;
+        }
+        if (senha == '') {
+            Alert.alert("Senha em branco", "Digite uma senha")
+        }
+
+        return true;
+    }
+
+    function tratarErros(erro: string) {
+        console.log(erro);
+
+        if (erro.includes("[auth/invalid-email]")) {
+            Alert.alert("Email inválido", "Digite um e-mail válido")
+        } else if (erro.includes("[ INVALID_LOGIN_CREDENTIALS ]")) {
+            Alert.alert("Login ou senha incorretos", "")
+        } else if (erro.includes("[auth/invalid-credential]")) {
+            Alert.alert("Login ou senha incorretos", "")
+        } else {
+            Alert.alert("Erro", erro)
+        }
+    }
+
+    function redefinirSenha() {
+        if (email == "") {
+            Alert.alert("Email em branco", "Preencha o email")
+            return
+        }
+
+        auth()
+            .sendPasswordResetEmail(email)
+            .then(() => Alert.alert("Redefinir senha",
+                "Enviamos um e-mail para você redefinir sua senha"
+            )).catch((error) => console.log(error))
+    }
+
 
     function exibirAlerta() {
         Alert.alert(
@@ -27,12 +78,12 @@ const TelaLogin = (props: LoginProps) => {
             '\nSenha: ' + senha
         );
 
-        props.navigation.navigate('TelaPrincipal', 
-            {texto: email});
-        
+        props.navigation.navigate('TelaPrincipal',
+            { texto: email });
+
     }
 
-    function fazerCadastro(){
+    function fazerCadastro() {
         props.navigation.navigate('TelaCadastro');
     }
 
@@ -76,7 +127,7 @@ const TelaLogin = (props: LoginProps) => {
 
                     <Pressable
                         style={(state) => [styles.botao, state.pressed ? { opacity: 0.2 } : null, { marginLeft: 40 }, { backgroundColor: 'green' }, { padding: 5 }, { borderRadius: 10 }]}
-                        onPress={() => { exibirMensagem() }}>
+                        onPress={() => { logar() }}>
 
                         <Text style={styles.texto_botao}>Entrar</Text>
                     </Pressable>
@@ -93,7 +144,8 @@ const TelaLogin = (props: LoginProps) => {
                     </Pressable>
 
                     <Pressable
-                        style={(state) => [styles.botao, state.pressed ? { opacity: 0.2 } : null, { backgroundColor: 'orange' }, { padding: 5 }, { borderRadius: 10 }]}>
+                        style={(state) => [styles.botao, state.pressed ? { opacity: 0.2 } : null, { backgroundColor: 'orange' }, { padding: 5 }, { borderRadius: 10 }]}
+                        onPress={() => { redefinirSenha() }}>
                         <Text style={styles.texto_botao}>Esqueceu a senha?</Text>
                     </Pressable>
                 </View>

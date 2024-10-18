@@ -13,13 +13,61 @@ const TelaCadastro = (props: CadastroProps) => {
     const [confSenha, setConfSenha] = useState('');
 
     function salvar() {
-        auth()
-            .createUserWithEmailAndPassword(email, senha)
-            .then(() => {
-                Alert.alert("Conta",
-                    "Cadastrada com sucesso")
-                props.navigation.goBack();
-            });
+        if (verificarCampos()) {
+            auth()
+                .createUserWithEmailAndPassword(email, senha)
+                .then(() => {
+                    Alert.alert("Conta",
+                        "Cadastrada com sucesso")
+                    props.navigation.goBack();
+                })
+                .catch((error) => { tratarErros(String(error)) });
+        }
+    }
+
+    function verificarCampos(): boolean {
+        if (email == '') {
+            Alert.alert("Email em branco",
+                "Digite um email")
+            return false;
+        }
+
+        if (senha == '') {
+            Alert.alert("Senha em branco",
+                "Digite uma senha de pelo menos 6 dígitos")
+            return false;
+        }
+
+        if (confSenha == '') {
+            Alert.alert("Confirmação de senha em branco",
+                "Digite a confirmação de senha")
+            return false;
+        }
+
+        if (senha != confSenha) {
+            Alert.alert("As senhas não são iguais",
+                "Digite a confirmação de senha corretamente")
+            return false;
+        }
+        return true;
+    }
+
+    function tratarErros(erro: string) {
+        console.log(erro);
+        if (erro.includes("[auth/invalid-email]")) {
+            Alert.alert("Email inválido", "Digite um email válido"
+            )
+        } else if (erro.includes("[auth/weak-password]")) {
+            Alert.alert("Senha fraca",
+                "A senha digitada é fraca. A senha deve conter pelo menos 6 dígitos."
+            )
+        } else if (erro.includes("[auth/email-already-in-use]")) {
+            Alert.alert("Email em uso",
+                "O email inserido já foi cadastrado em outra conta."
+            )
+        } else {
+            Alert.alert("Erro", erro)
+        }
     }
 
     function exibirMensagemErro() {

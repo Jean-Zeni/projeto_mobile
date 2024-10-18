@@ -4,11 +4,13 @@ import TelaLogin from "../layouts/TelaLogin";
 import TelaCadastro from "../layouts/TelaCadastro";
 import TelaExemplos from "../layouts/TelaExemplos";
 import TelaExecExemplos from "../layouts/TelaExecExemplos";
+import TelaCadastroProd from "../layouts/TelaCadastroProd";
 
 type RootStackParamList = {
     TelaPrincipal: { texto: string };
     TelaLogin: undefined;
     TelaCadastro: undefined;
+    TelaCadastroProd: undefined;
     TelaExemplos: undefined;
     TelaExecExemplos: { tipoComponente: number };
     //modelo: telaMod: {valor: number}
@@ -33,6 +35,8 @@ const HomeNavigator = () => {
 
             <Stack.Screen name="TelaExecExemplos" component={TelaExecExemplos} />
 
+            <Stack.Screen name="TelaCadastroProd" component={TelaCadastroProd} />
+
         </Stack.Navigator>
     );
 }
@@ -52,6 +56,9 @@ type TelaExemploProps = NativeStackScreenProps<RootStackParamList,
 type TelaExecExemploProps = NativeStackScreenProps<RootStackParamList,
     'TelaExecExemplos'>;
 
+type CadastroProdutoProps = NativeStackScreenProps<RootStackParamList,
+    'TelaCadastro'>;
+
 export default HomeNavigator;
 
 export type {
@@ -59,5 +66,6 @@ export type {
     LoginProps,
     CadastroProps,
     TelaExemploProps,
-    TelaExecExemploProps
+    TelaExecExemploProps,
+    CadastroProdutoProps
 };
