@@ -1,9 +1,10 @@
-import { Double } from "react-native/Libraries/Types/CodegenTypes";
+
 
 type Produto = {
+    id: string,
     nome: string,
-    codBarras: string,
-    preco: Double
+    codigoBarras: string,
+    preco: number
 }
 
 export type { Produto };

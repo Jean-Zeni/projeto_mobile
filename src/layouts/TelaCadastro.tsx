@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { CadastroProps } from "../navigation/HomeNavigator";
-import { Alert, Pressable, ScrollView, Text, TextInput, View } from "react-native";
+import { Alert, FlatList, Pressable, ScrollView, Text, TextInput, View } from "react-native";
 import { styles } from "../styles/styles";
 import TelaLogin from "./TelaLogin";
 
@@ -143,6 +143,8 @@ const TelaCadastro = (props: CadastroProps) => {
 
                     <Text style={styles.texto_botao}>Cancelar</Text>
                 </Pressable>
+
+                
 
             </ScrollView>
 

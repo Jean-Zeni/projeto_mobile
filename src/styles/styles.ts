@@ -119,6 +119,19 @@ const styles = StyleSheet.create({
 
     click: {
         opacity: 0.5
+    },
+
+    tituloTela: {
+        color: "black",
+        fontSize: 30,
+        fontStyle: "italic",
+        textAlign: "center"
+    },
+
+    titulo_campos: {
+        color: "black",
+        fontSize: 20,
+        marginTop: 10
     }
 });
 
