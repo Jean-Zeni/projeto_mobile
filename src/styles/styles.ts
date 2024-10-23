@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         width: 160
     },
-    
+
     texto_botao: {
         fontSize: 20,
         color: 'white'
@@ -132,6 +132,42 @@ const styles = StyleSheet.create({
         color: "black",
         fontSize: 20,
         marginTop: 10
+    },
+
+    centralizar: {
+        alignItems: "center"
+    },
+
+    card: {
+        backgroundColor: "#D14F39",
+        borderColor: "black",
+        borderWidth: 1,
+        margin: 5
+    },
+
+    dados_card: {
+        color: "black",
+        gap: 5
+    },
+
+    botao_deletar: {
+        backgroundColor: "red",
+        margin: 2,
+        borderRadius: 10,
+        width: 40
+    },
+
+    texto_botao_card: {
+        fontSize: 30,
+        color: "black",
+        textAlign: "center"
+    },
+
+    botao_alterar: {
+        backgroundColor: "#DECEA7",
+        margin: 2,
+        borderRadius: 10,
+        width: 40
     }
 });
 
