@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AlterarProdutoProps, CadastroProdutoProps } from "../navigation/HomeNavigator";
+import { AlterarProdutoProps } from "../navigation/HomeNavigator";
 import firestore from "@react-native-firebase/firestore";
 import { Alert, Pressable, Text, TextInput, View } from "react-native";
 import { Produto } from "../types/Produto";
@@ -9,6 +9,9 @@ import { styles } from "../styles/styles";
 const TelaAlterarProduto = (props: AlterarProdutoProps) => {
 
     const [nome, setNome] = useState('');
+    const [nomeAutor, setNomeAutor] = useState('');
+    const [genero, setGenero] = useState('');
+    const [editora, setEditora] = useState('');
     const [codigoBarras, setCodigoBarras] = useState('');
     const [preco, setPreco] = useState('');
 
@@ -26,6 +29,9 @@ const TelaAlterarProduto = (props: AlterarProdutoProps) => {
         } as Produto;
 
         setNome(produto.nome);
+        setNomeAutor(produto.nomeAutor);
+        setGenero(produto.genero);
+        setEditora(produto.editora);
         setCodigoBarras(produto.codigoBarras);
         setPreco(produto.preco.toString());
 
@@ -40,6 +46,9 @@ const TelaAlterarProduto = (props: AlterarProdutoProps) => {
         if (verificarCampos()) {
             let produto = {
                 nome: nome,
+                nomeAutor: nomeAutor,
+                genero: genero,
+                editora: editora,
                 codigoBarras: codigoBarras,
                 preco: Number.parseFloat(preco)
             } as Produto;
@@ -56,6 +65,7 @@ const TelaAlterarProduto = (props: AlterarProdutoProps) => {
         }
     }
 
+    //fazer novas alterações aqui
     function verificarCampos() {
         if (!nome) {
             Alert.alert("Nome em branco",

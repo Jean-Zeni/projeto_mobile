@@ -1,14 +1,7 @@
 import React, { useState } from 'react';
 import { Alert, Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { LoginProps, PrincipalProps } from '../navigation/HomeNavigator';
-import HelloWorld from '../components/HelloWorld';
 import { styles } from '../styles/styles';
-import Exemplo1 from '../components/Exemplo1';
-import ExemploStylesText from '../components/ExemploStyleText';
-import ExemploStylesView from '../components/ExemploStyleView';
-import StyleLog from '../components/StyleLog';
-import CalcularAprovacao from '../components/CalculadoraAprovacao';
-
 import auth from "@react-native-firebase/auth";
 
 const TelaLogin = (props: LoginProps) => {
@@ -65,23 +58,23 @@ const TelaLogin = (props: LoginProps) => {
     }
 
 
-    function exibirAlerta() {
-        Alert.alert(
-            'Email: ' + email
-        )
-    }
+    // function exibirAlerta() {
+    //     Alert.alert(
+    //         'Email: ' + email
+    //     )
+    // }
 
-    function exibirMensagem() {
-        Alert.alert(
-            'Dados',
-            'E-mail: ' + email + //login
-            '\nSenha: ' + senha
-        );
+    // function exibirMensagem() {
+    //     Alert.alert(
+    //         'Dados',
+    //         'E-mail: ' + email + //login
+    //         '\nSenha: ' + senha
+    //     );
 
-        props.navigation.navigate('TelaPrincipal',
-            { texto: email });
+    //     props.navigation.navigate('TelaPrincipal',
+    //         { texto: email });
 
-    }
+    // }
 
     function fazerCadastro() {
         props.navigation.navigate('TelaCadastro');
@@ -91,17 +84,13 @@ const TelaLogin = (props: LoginProps) => {
 
         <View style={styles.tela}>
 
-            <Image
-                style={styles.imagem}
-                source={require('../images/rebels512px.png')} />
-
             <ScrollView>
 
                 <Text style={[styles.titulo1, styles.margem]}>Login</Text>
 
                 <View>
 
-                    <Text style={[styles.titulo2, { marginTop: 20 }, styles.margem]}>E-mail:</Text>
+                    <Text style={[styles.titulo2, { marginTop: 20 }, styles.margem]}>Email:</Text>
 
                     <TextInput
                         style={[styles.caixa_texto, styles.largura_70, { marginTop: 10 }, styles.margem]}

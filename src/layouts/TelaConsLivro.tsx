@@ -1,11 +1,11 @@
 import firestore from "@react-native-firebase/firestore";
 import { useEffect, useState } from "react";
 import { Produto } from "../types/Produto";
-import { ConsProdutoProps } from "../navigation/HomeNavigator";
+import { ConsLivroProps } from "../navigation/HomeNavigator";
 import { Alert, FlatList, Image, Pressable, Text, View } from "react-native";
 import { styles } from "../styles/styles";
 
-const TelaConsProduto = (props: ConsProdutoProps) => {
+const TelaConsLivro = (props: ConsLivroProps) => {
     const [produtos, setProdutos] = useState([] as Produto[]);
 
     //Buscar os dados quando abrir a tela
@@ -33,13 +33,13 @@ const TelaConsProduto = (props: ConsProdutoProps) => {
             .doc(id)
             .delete()
             .then(() => {
-                Alert.alert("Produto", "Removido com sucesso!")
+                Alert.alert("Livro", "Removido com sucesso!")
             })
             .catch((error) => console.log(error));
     }
 
     function alterarProduto(id: string) {
-        props.navigation.navigate('TelaAlterarProduto', {id: id})
+        props.navigation.navigate('TelaAlterarProduto', { id: id })
     }
 
 
@@ -55,9 +55,9 @@ const TelaConsProduto = (props: ConsProdutoProps) => {
                     <ItemProduto
                         numeroOrdem={info.index + 1}
                         prod={info.item}
-                        onDeletar={deletarProduto} 
-                        onAlterar={alterarProduto} 
-                        />
+                        onDeletar={deletarProduto}
+                        onAlterar={alterarProduto}
+                    />
                 }
             />
 
@@ -95,6 +95,18 @@ const ItemProduto = (props: ItemProdutoProps) => {
                     ID: {props.prod.id}
                 </Text>
                 <Text style={{ fontSize: 20 }}>
+                    Nome do livro: {props.prod.nome}
+                </Text>
+                <Text style={{ fontSize: 20 }}>
+                    Nome do autor: {props.prod.nomeAutor}
+                </Text>
+                <Text style={{ fontSize: 20 }}>
+                    Gênero: {props.prod.genero}
+                </Text>
+                <Text style={{ fontSize: 20 }}>
+                    Editora: {props.prod.editora}
+                </Text>
+                <Text style={{ fontSize: 20 }}>
                     Código de barras: {props.prod.codigoBarras}
                 </Text>
                 <Text style={{ fontSize: 20 }}>
@@ -102,7 +114,7 @@ const ItemProduto = (props: ItemProdutoProps) => {
                 </Text>
             </View>
 
-            <View style = {styles.view2}>
+            <View style={styles.view2}>
 
                 <Pressable
                     onPress={() => props.onDeletar(props.prod.id)}>
@@ -113,7 +125,7 @@ const ItemProduto = (props: ItemProdutoProps) => {
 
                 <Pressable
                     //no momento este botao tem a mesma função do delete
-                    onPress = {() => {props.onAlterar(props.prod.id)}}>
+                    onPress={() => { props.onAlterar(props.prod.id) }}>
 
                     <Image
                         source={require('../images/edit48px.png')} />
@@ -126,4 +138,4 @@ const ItemProduto = (props: ItemProdutoProps) => {
 
 }
 
-export default TelaConsProduto;
+export default TelaConsLivro;
