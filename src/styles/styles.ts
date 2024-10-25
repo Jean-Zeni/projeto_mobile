@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     },
     botao: {
         justifyContent: 'center',
-        backgroundColor: 'green',
+        backgroundColor: '#2E2E2E',
         paddingVertical: 10,
         paddingHorizontal: 30,
         marginTop: 20,
@@ -66,7 +66,6 @@ const styles = StyleSheet.create({
     },
 
     view3: {
-        marginTop: 100,
         flex: 1,
         flexDirection: "column",
         gap: 10,

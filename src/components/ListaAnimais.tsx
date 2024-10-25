@@ -1,6 +1,6 @@
 import React from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
-import { Animal } from '../types/Animal'
+import { Animal } from '../types/Venda'
 import { styles } from "../styles/styles";
 
 type ListaAnimaisProps = {

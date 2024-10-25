@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AlterarProdutoProps } from "../navigation/HomeNavigator";
 import firestore from "@react-native-firebase/firestore";
-import { Alert, Pressable, Text, TextInput, View } from "react-native";
+import { Alert, Pressable, ScrollView, Text, TextInput, View } from "react-native";
 import { Produto } from "../types/Produto";
 import { styles } from "../styles/styles";
 
@@ -101,43 +101,76 @@ const TelaAlterarProduto = (props: AlterarProdutoProps) => {
     return (
         <View
             style={styles.tela}>
-            <Text style={styles.tituloTela}>Alterar Dados do Produto</Text>
-            <Text
-                style={styles.titulo_campos}>
-                Nome:
-            </Text>
+            <ScrollView>
+                <Text style={styles.tituloTela}>Alterar Dados do Produto</Text>
+                <Text
+                    style={styles.titulo_campos}>
+                    Nome:
+                </Text>
 
-            <TextInput
-                style={styles.caixa_texto}
-                defaultValue={nome}
-                onChangeText={(text) => { setNome(text) }} />
+                <TextInput
+                    style={styles.caixa_texto}
+                    defaultValue={nome}
+                    onChangeText={(text) => { setNome(text) }} />
 
-            <Text
-                style={styles.titulo_campos}>
-                Código de Barras
-            </Text>
+                <Text
+                    style={styles.titulo_campos}>
+                    Nome do Autor:
+                </Text>
 
-            <TextInput
-                maxLength={7}
-                style={[styles.caixa_texto, { width: '60%' }]}
-                defaultValue={codigoBarras}
-                onChangeText={(text) => { setCodigoBarras(text) }} />
+                <TextInput
+                    style={styles.caixa_texto}
+                    defaultValue={nomeAutor}
+                    onChangeText={(text) => { setNomeAutor(text) }} />
 
-            <Text
-                style={styles.titulo_campos}>
-                Preço:
-            </Text>
+                <Text
+                    style={styles.titulo_campos}>
+                    Gênero:
+                </Text>
 
-            <TextInput
-                style={[styles.caixa_texto, { width: '40%' }]}
-                defaultValue={preco}
-                onChangeText={(text) => { setPreco(text) }} />
+                <TextInput
+                    style={styles.caixa_texto}
+                    defaultValue={genero}
+                    onChangeText={(text) => { setGenero(text) }} />
 
-            <Pressable
-                style={styles.botao}
-                onPress={() => alterar()}>
-                <Text style={styles.texto_botao}>Salvar alterações</Text>
-            </Pressable>
+                <Text
+                    style={styles.titulo_campos}>
+                    Editora:
+                </Text>
+
+                <TextInput
+                    style={styles.caixa_texto}
+                    defaultValue={editora}
+                    onChangeText={(text) => { setEditora(text) }} />
+
+                <Text
+                    style={styles.titulo_campos}>
+                    Código de Barras:
+                </Text>
+
+                <TextInput
+                    maxLength={7}
+                    style={[styles.caixa_texto, { width: '60%' }]}
+                    defaultValue={codigoBarras}
+                    onChangeText={(text) => { setCodigoBarras(text) }} />
+
+                <Text
+                    style={styles.titulo_campos}>
+                    Preço:
+                </Text>
+
+                <TextInput
+                    style={[styles.caixa_texto, { width: '40%' }]}
+                    defaultValue={preco}
+                    onChangeText={(text) => { setPreco(text) }} />
+
+                <Pressable
+                    style={styles.botao}
+                    onPress={() => alterar()}>
+                    <Text style={styles.texto_botao}>Salvar alterações</Text>
+                </Pressable>
+
+            </ScrollView>
 
         </View>
     );

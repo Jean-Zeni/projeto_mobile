@@ -7,14 +7,17 @@ import TelaExecExemplos from "../layouts/TelaExecExemplos";
 import TelaAlterarProduto from "../layouts/TelaAlterarProduto";
 import TelaCadLivro from "../layouts/TelaCadLivro";
 import TelaConsLivro from "../layouts/TelaConsLivro";
+import TelaCadVenda from "../layouts/TelaCadVenda";
 
 type RootStackParamList = {
     TelaPrincipal: { texto: string };
+    TelaCadVenda: undefined;
     TelaLogin: undefined;
     TelaCadastro: undefined;
     TelaCadLivro: undefined;
     TelaExemplos: undefined;
     TelaConsLivro: undefined;
+    TelaConsVendas: undefined;
     TelaAlterarProduto: { id: string };
     TelaExecExemplos: { tipoComponente: number };
     //modelo: telaMod: {valor: number}
@@ -25,7 +28,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const HomeNavigator = () => {
     return (
         <Stack.Navigator
-            initialRouteName="TelaConsLivro" //nome da tela inicial
+            initialRouteName="TelaCadVenda" //nome da tela inicial
             screenOptions={{ headerShown: false }} //headerShown define se o cabeçalho irá ser exibido
         >
             {/* define uma tela dando um nome (igual ao RootStackParamList) e qual o componente será carregado */}
@@ -41,6 +44,8 @@ const HomeNavigator = () => {
 
             <Stack.Screen name="TelaCadLivro" component={TelaCadLivro} />
 
+            <Stack.Screen name="TelaCadVenda" component={TelaCadVenda} />
+
             <Stack.Screen name="TelaConsLivro" component={TelaConsLivro} />
 
             <Stack.Screen name="TelaAlterarProduto" component={TelaAlterarProduto} />
@@ -51,6 +56,12 @@ const HomeNavigator = () => {
 
 type PrincipalProps = NativeStackScreenProps<RootStackParamList,
     'TelaPrincipal'>;
+
+type TelaConsVendasProps = NativeStackScreenProps<RootStackParamList,
+    'TelaConsVendas'>;
+    
+type CadVendaProps = NativeStackScreenProps<RootStackParamList,
+    'TelaCadVenda'>;
 
 type LoginProps = NativeStackScreenProps<RootStackParamList,
     'TelaLogin'>;
@@ -76,6 +87,7 @@ type AlterarProdutoProps = NativeStackScreenProps<RootStackParamList,
 export default HomeNavigator;
 
 export type {
+    CadVendaProps,
     PrincipalProps,
     LoginProps,
     CadastroProps,
@@ -83,5 +95,6 @@ export type {
     TelaExecExemploProps,
     CadLivroProps,
     ConsLivroProps,
-    AlterarProdutoProps
+    AlterarProdutoProps,
+    TelaConsVendasProps
 };
