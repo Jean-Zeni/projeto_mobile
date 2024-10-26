@@ -57,25 +57,6 @@ const TelaLogin = (props: LoginProps) => {
             )).catch((error) => console.log(error))
     }
 
-
-    // function exibirAlerta() {
-    //     Alert.alert(
-    //         'Email: ' + email
-    //     )
-    // }
-
-    // function exibirMensagem() {
-    //     Alert.alert(
-    //         'Dados',
-    //         'E-mail: ' + email + //login
-    //         '\nSenha: ' + senha
-    //     );
-
-    //     props.navigation.navigate('TelaPrincipal',
-    //         { texto: email });
-
-    // }
-
     function fazerCadastro() {
         props.navigation.navigate('TelaCadastro');
     }
@@ -115,7 +96,7 @@ const TelaLogin = (props: LoginProps) => {
                     />
 
                     <Pressable
-                        style={(state) => [styles.botao, state.pressed ? { opacity: 0.2 } : null, { marginLeft: 40 }, { backgroundColor: 'green' }, { padding: 5 }, { borderRadius: 10 }]}
+                        style={(state) => [styles.botao, state.pressed ? { opacity: 0.2 } : null, { marginLeft: 40 }, { padding: 5 }, { borderRadius: 10 }]}
                         onPress={() => { logar() }}>
 
                         <Text style={styles.texto_botao}>Entrar</Text>
@@ -127,13 +108,13 @@ const TelaLogin = (props: LoginProps) => {
 
                 <View style={[styles.view2, { marginTop: 20 }]} >
                     <Pressable
-                        style={(state) => [styles.botao, state.pressed ? { opacity: 0.2 } : null, { backgroundColor: 'orange' }, { padding: 5 }, { borderRadius: 10 }]}
+                        style={(state) => [styles.botao, state.pressed ? { opacity: 0.2 } : null, { padding: 5 }, { borderRadius: 10 }, {backgroundColor: "#5E0000"}]}
                         onPress={() => { fazerCadastro() }}>
                         <Text style={styles.texto_botao}>Cadastrar-se</Text>
                     </Pressable>
 
                     <Pressable
-                        style={(state) => [styles.botao, state.pressed ? { opacity: 0.2 } : null, { backgroundColor: 'orange' }, { padding: 5 }, { borderRadius: 10 }]}
+                        style={(state) => [styles.botao, state.pressed ? { opacity: 0.2 } : null, { padding: 5 }, { borderRadius: 10 }, {backgroundColor: "#5E0000"}]}
                         onPress={() => { redefinirSenha() }}>
                         <Text style={styles.texto_botao}>Esqueceu a senha?</Text>
                     </Pressable>

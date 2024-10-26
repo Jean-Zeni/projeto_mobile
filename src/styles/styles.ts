@@ -3,17 +3,18 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     tela: {
         flex: 4,
-        backgroundColor: '#DEDCD0'
+        backgroundColor: '#5E0000'
     },
     titulo1: {
         fontSize: 40,
         fontWeight: 'bold',
-        color: 'black'
+        alignSelf: "center",
+        color: 'white'
     },
     titulo2: {
         fontSize: 30,
         fontWeight: 'bold',
-        color: 'black'
+        color: 'white'
     },
     botao: {
         justifyContent: 'center',
@@ -26,12 +27,14 @@ const styles = StyleSheet.create({
     },
 
     texto_botao: {
-        fontSize: 20,
+        textAlign: "center",
+        fontSize: 15,
         color: 'white'
     },
 
     caixa_texto: {
-        color: 'black',
+        color: 'white',
+        backgroundColor: '#2E2E2E',
         fontSize: 20,
         borderWidth: 1,
         borderRadius: 4,

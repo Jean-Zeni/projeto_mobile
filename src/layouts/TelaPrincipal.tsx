@@ -31,8 +31,20 @@ const TelaPrincipal = (props: PrincipalProps) => {
 
                 <Pressable
                     style={styles.botao}
-                    onPress={() => { props.navigation.navigate('TelaConsLivro') }}>
+                    onPress={() => { props.navigation.navigate('TelaConsVendas') }}>
                     <Text style={styles.texto_botao}>Vendas Efetuadas</Text>
+                </Pressable>
+
+                <Pressable
+                    style={styles.botao}
+                    onPress={() => { props.navigation.navigate('TelaCadVenda') }}>
+                    <Text style={styles.texto_botao}>Cadastrar Venda</Text>
+                </Pressable>
+
+                <Pressable
+                    style={styles.botao}
+                    onPress={() => { props.navigation.navigate('TelaCadCliente') }}>
+                    <Text style={styles.texto_botao}>Cadastrar Cliente</Text>
                 </Pressable>
 
             </ScrollView>

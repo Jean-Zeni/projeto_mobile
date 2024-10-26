@@ -1,6 +1,6 @@
 type Cliente = {
     nome: string,
-    email: number,
+    email: string
     cpf: string,
 }
 
