@@ -131,14 +131,14 @@ const TelaCadastro = (props: CadastroProps) => {
                 />
 
                 <Pressable
-                    style={(state) => [styles.botao, state.pressed ? { opacity: 0.2 } : null, { marginLeft: 40 }, { backgroundColor: 'green' }, { padding: 5 }, { borderRadius: 10 }]}
+                    style={(state) => [styles.botao, state.pressed ? { opacity: 0.2 } : null, { marginLeft: 40 }, { padding: 5 }, { borderRadius: 10 }, {backgroundColor: "#f7ffab"}]}
                     onPress={() => salvar()}>
 
-                    <Text style={styles.texto_botao}>Salvar</Text>
+                    <Text style={[styles.texto_botao, {color: "black"}]}>Salvar</Text>
                 </Pressable>
 
                 <Pressable
-                    style={(state) => [styles.botao, state.pressed ? { opacity: 0.2 } : null, { marginLeft: 40 }, { backgroundColor: '#A10012' }, { padding: 5 }, { borderRadius: 10 }]}
+                    style={(state) => [styles.botao, state.pressed ? { opacity: 0.2 } : null, { marginLeft: 40 }, { padding: 5 }, { borderRadius: 10 }]}
                     onPress={() => { cancelarCadastro() }}>
 
                     <Text style={styles.texto_botao}>Cancelar</Text>

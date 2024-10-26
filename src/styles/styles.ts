@@ -124,14 +124,14 @@ const styles = StyleSheet.create({
     },
 
     tituloTela: {
-        color: "black",
+        color: "white",
         fontSize: 30,
         fontStyle: "italic",
         textAlign: "center"
     },
 
     titulo_campos: {
-        color: "black",
+        color: "white",
         fontSize: 20,
         marginTop: 10
     },
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     },
 
     card: {
-        backgroundColor: "#D14F39",
+        backgroundColor: "#2E2E2E",
         borderColor: "black",
         borderWidth: 1,
         margin: 5

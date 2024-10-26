@@ -3,7 +3,7 @@ import { CadVendaProps } from "../navigation/HomeNavigator"
 import { styles } from "../styles/styles";
 import { useState, useEffect } from "react";
 import { Produto } from "../types/Produto";
-import firestore from "@react-native-firebase/firestore";
+import firestore, { firebase } from "@react-native-firebase/firestore";
 import { Venda } from "../types/Venda";
 
 const TelaCadVenda = (props: CadVendaProps) => {
@@ -16,6 +16,54 @@ const TelaCadVenda = (props: CadVendaProps) => {
     const [valorProduto, setValorProduto] = useState('');
     const [lista, setLista] = useState([] as Venda[]);
     const [desc, setDesc] = useState(0);
+
+    const db = firebase.firestore();
+
+    const buscarLivroPorNome = async (nomeLivro: string) => {
+        try {
+            const snapshot = await db.collection('produtos').where('nome', '==', nomeLivro).get();
+
+            if (!snapshot.empty) {
+                const livroData = snapshot.docs[0].data();
+                setValorProduto(livroData.preco.toString())
+
+                return {
+                    nomeLivro: livroData.nome,
+                    valorProduto: livroData.preco,
+                };
+            } else {
+                Alert.alert("Erro",
+                    "Livro não encontrado"
+                )
+                return null;
+            }
+        } catch (error) {
+            Alert.alert("Erro ao buscar livro");
+        }
+    };
+
+    const buscarCpf = async (cpf: string) => {
+        try {
+            const snapshot = await db.collection('clientes').where('cpf', '==', cpf).get();
+
+            if (!snapshot.empty) {
+                const cpfData = snapshot.docs[0].data();
+                setCpf(cpfData.cpf)
+
+                return {
+                    nomeCliente: cpfData.nome,
+                    Cpf: cpfData.cpf,
+                };
+            } else {
+                Alert.alert("Erro",
+                    "Cliente não encontrado"
+                )
+                return null;
+            }
+        } catch (error) {
+            Alert.alert("Erro ao buscar cliente");
+        }
+    };
 
     async function verificarCliente() {
 
@@ -40,9 +88,10 @@ const TelaCadVenda = (props: CadVendaProps) => {
 
     async function calcularDesc() {
         if (await verificarCliente()) {
-            setDesc(Number.parseFloat(valorProduto) - ((15 / 100) * Number.parseFloat(valorProduto)))
+            setDesc(Number.parseFloat(valorProduto) - (15 / 100) * Number.parseFloat(valorProduto))
         }
     }
+
     function concluirVenda() {
 
         let venda = {
@@ -107,7 +156,7 @@ const TelaCadVenda = (props: CadVendaProps) => {
 
     return (
 
-        <View>
+        <View style={styles.tela}>
 
             <ScrollView>
 
@@ -121,6 +170,13 @@ const TelaCadVenda = (props: CadVendaProps) => {
                 <TextInput
                     style={styles.caixa_texto}
                     onChangeText={(text) => { setNomeLivro(text) }} />
+
+                <Pressable style={[styles.botao, { alignSelf: "center" }]}
+                    onPress={() => buscarLivroPorNome(nomeLivro)}>
+                    <Text style={styles.texto_botao}>
+                        Buscar Produto
+                    </Text>
+                </Pressable>
 
                 <Text
                     style={styles.titulo_campos}>
@@ -137,15 +193,18 @@ const TelaCadVenda = (props: CadVendaProps) => {
                 </Text>
 
                 <TextInput
-                    style={styles.caixa_texto}
-                    onChangeText={(text) => { setValorProduto(text) }} />
+                    style={[styles.caixa_texto, { width: 150 }]}
+                    // onChangeText={(text) => { setValorProduto(text) }}
+                    value={valorProduto} />
 
                 <Text
                     style={styles.titulo_campos}>
-                    Valor Total da Venda: {desc.toFixed(2)}
+                    Valor Total da Venda:
                 </Text>
 
-
+                <TextInput
+                value = {desc.toFixed(2)}
+                />
 
                 <Text
                     style={styles.titulo_campos}>
@@ -155,6 +214,13 @@ const TelaCadVenda = (props: CadVendaProps) => {
                 <TextInput
                     style={styles.caixa_texto}
                     onChangeText={(text) => { setCpf(text) }} />
+
+                <Pressable style={[styles.botao, { alignSelf: "center" }]}
+                    onPress={() => buscarCpf(cpf)}>
+                    <Text style={styles.texto_botao}>
+                        Verificar CPF
+                    </Text>
+                </Pressable>
 
                 <Pressable style={[styles.botao, { alignSelf: "center" }]}
                     onPress={() => concluirVenda()}>
@@ -167,13 +233,6 @@ const TelaCadVenda = (props: CadVendaProps) => {
                     onPress={() => calcularDesc()}>
                     <Text style={styles.texto_botao}>
                         Calcular Desconto
-                    </Text>
-                </Pressable>
-
-                <Pressable style={[styles.botao, { alignSelf: "center" }]}
-                    onPress={() => calcularDesc()}>
-                    <Text style={styles.texto_botao}>
-                        Buscar Produto
                     </Text>
                 </Pressable>
 

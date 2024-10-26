@@ -1,4 +1,4 @@
-import firestore from "@react-native-firebase/firestore";
+import firestore, { firebase } from "@react-native-firebase/firestore";
 import { useEffect, useState } from "react";
 import { Produto } from "../types/Produto";
 import { ConsLivroProps } from "../navigation/HomeNavigator";
@@ -88,7 +88,7 @@ const ItemProduto = (props: ItemProdutoProps) => {
     return (
         <View style={styles.card}>
             <View style={styles.dados_card}>
-                <Text style={{ fontSize: 30, color: 'black' }}>
+                <Text style={{ fontSize: 30, color: 'white' }}>
                     {props.numeroOrdem + ' - ' + props.prod.nome}
                 </Text>
                 <Text style={{ fontSize: 20 }}>

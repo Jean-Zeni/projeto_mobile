@@ -31,7 +31,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const HomeNavigator = () => {
     return (
         <Stack.Navigator
-            initialRouteName="TelaLogin" //nome da tela inicial
+            initialRouteName="TelaCadVenda" //nome da tela inicial
             screenOptions={{ headerShown: false }} //headerShown define se o cabeçalho irá ser exibido
         >
             {/* define uma tela dando um nome (igual ao RootStackParamList) e qual o componente será carregado */}

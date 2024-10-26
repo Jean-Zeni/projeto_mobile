@@ -165,7 +165,7 @@ const TelaAlterarProduto = (props: AlterarProdutoProps) => {
                     onChangeText={(text) => { setPreco(text) }} />
 
                 <Pressable
-                    style={styles.botao}
+                    style={[styles.botao, {alignSelf: "center"}]}
                     onPress={() => alterar()}>
                     <Text style={styles.texto_botao}>Salvar alterações</Text>
                 </Pressable>
