@@ -94,22 +94,27 @@ const TelaCadVenda = (props: CadVendaProps) => {
 
     function concluirVenda() {
 
-        let venda = {
-            nomeLivro: nomeLivro,
-            dataVenda: dataVenda,
-            totalVenda: Number.parseFloat(totalVenda),
-            cpf: cpf
-        } as Venda;
+        if (verificarCampos()) {
+            //cria um obj do tipo venda
+            let venda = {
+                nomeLivro: nomeLivro,
+                dataVenda: dataVenda,
+                totalVenda: Number.parseFloat(totalVenda),
+                cpf: cpf
+            } as Venda;
 
-        firestore()
-            .collection('vendas')
-            .add(venda)
-            .then(() => {
-                Alert.alert("Produto", "Cadastrado com sucesso!");
-                props.navigation.goBack();
-            })
-            .catch((error) => console.log(error));
+            //adiciona o obj Venda na tabela produtos
+            firestore()
+                .collection('vendas')
+                .add(venda)
+                .then(() => {
+                    Alert.alert("Produto", "Cadastrado com sucesso!");
+                    props.navigation.goBack();
+                })
+                .catch((error) => console.log(error));
+        }
     }
+
 
     function verificarCampos() {
         if (nomeLivro == "") {
@@ -150,6 +155,8 @@ const TelaCadVenda = (props: CadVendaProps) => {
             )
             return false;
         }
+
+        return true;
     }
 
 
@@ -203,7 +210,9 @@ const TelaCadVenda = (props: CadVendaProps) => {
                 </Text>
 
                 <TextInput
-                value = {desc.toFixed(2)}
+                    style={[styles.caixa_texto, { width: 150 }]}
+                    value={desc.toFixed(2)}
+                    onChangeText={(text) => { setTotalVenda(text) }}
                 />
 
                 <Text
